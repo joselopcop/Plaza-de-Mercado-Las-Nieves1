@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pantalla Negra Sonora</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: black;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+      grid-gap: 10px;
+      padding: 10px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    button {
+      font-size: 600%;
+      /* Agrega este bloque para ajustar el margen del botón */
+      margin: 90px;
+      color: transparent;
+    }
+    .grid-item {
+      position: relative;
+      background: black;
+      color: rgb(255, 248, 248);
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .grid-item:hover {
+      transform: scale(1.1);
+    }
+
+    .wave-effect {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 0;
+      background: linear-gradient(to top, rgba(124, 41, 192, 0.5) 0%, transparent 100%);
+      transition: height 0.3s ease-in-out;
+    }
+
+    .grid-item:hover .wave-effect {
+      height: 100%;
+    }
+
+    /* Agrega este bloque para hacer los botones el triple de grandes */
+    button {
+      font-size: 300%;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-container">
+    <div class="grid-item" onclick="toggleSound('WT.Ext.Nieves.04.11-001.wav', this)">
+      <div class="wave-effect"></div>
+    </div>
+    <div class="grid-item" onclick="toggleSound('WT.Int.Nieves.04.10-001.mp3', this)">
+      <div class="wave-effect"></div>
+    </div>
+    <div class="grid-item" onclick="toggleSound('WT.Int.Nieves.04.10-002.wav', this)">
+      <div class="wave-effect"></div>
+
+    </div>
+    <div class="grid-item" onclick="toggleSound('WT.Int.Nieves.04.10-003.mp3', this)">
+      <div class="wave-effect"></div>
+    
+    </div>
+    <div class="grid-item" onclick="toggleSound('WT.Int.Nieves.04.10-004.mp3', this)">
+        <div class="wave-effect"></div>
+       
+      </div>
+      <div class="grid-item" onclick="toggleSound('WT.Int.Nieves.04.10-005.mp3', this)">
+        <div class="wave-effect"></div>
+       
+      </div>
+      <div class="grid-item" onclick="toggleSound('WT.Int.Nieves.04.10-006.wav', this)">
+        <div class="wave-effect"></div>
+        
+      </div>
+      <div class="grid-item" onclick="toggleSound('WT.Int.Nieves.04.10-007.wav', this)">
+        <div class="wave-effect"></div>
+      
+      </div>
+      <div class="grid-item" onclick="toggleSound('WT.Int.Nieves.04.11-008.wav', this)">
+        <div class="wave-effect"></div>
+        
+      </div>
+      <div class="grid-item" onclick="toggleSound('WT.Int.Nieves.04.11-009.wav', this)">
+        <div class="wave-effect"></div>
+       
+      </div>
+      <div class="grid-item" onclick="toggleSound('WT.Int.Nieves.04.11-010.wav', this)">
+        <div class="wave-effect"></div>
+      
+      </div>
+      <div class="grid-item" onclick="toggleSound('WT.Int.Nieves.04.15-011.aac', this)">
+        <div class="wave-effect"></div>
+      
+      </div>
+      <div class="grid-item" onclick="toggleSound('WT.Int.Nieves.04.15-012.aac', this)">
+        <div class="wave-effect"></div>
+       
+      </div>
+      <div class="grid-item" onclick="toggleSound('WT.Int.Nieves.04.15-013.aac', this)">
+        <div class="wave-effect"></div>
+      
+      </div>
+      <div class="grid-item" onclick="toggleSound('Wt.Int.Nieves.04.14-014.wav', this)">
+        <div class="wave-effect"></div>
+        
+      </div>
+      <div class="grid-item" onclick="toggleSound('WT.Int.Nieves.04.14-015.wav', this)">
+        <div class="wave-effect"></div>
+       
+      </div>
+      <div class="grid-item" onclick="toggleSound('song3.mp3', this)">
+        <div class="wave-effect"></div>
+        
+      </div>
+      <div class="grid-item" onclick="toggleSound('song3.mp3', this)">
+        <div class="wave-effect"></div>
+       
+      </div>
+      <div class="grid-item" onclick="toggleSound('song3.mp3', this)">
+        <div class="wave-effect"></div>
+        
+      </div>
+      <div class="grid-item" onclick="toggleSound('song3.mp3', this)">
+        <div class="hover"></div>
+        <button></button>
+      </div>
+      
+    
+    <!-- Repite este bloque para agregar más elementos grid-item -->
+    <!-- Por ejemplo:
+    <div class="grid-item" onclick="toggleSound('song5.mp3', this)">
+      <div class="wave-effect"></div>
+      <button>¡Haz clic aquí!</button>
+    </div>
+    -->
+  </div>
+
+  <script>
+    function toggleSound(soundFile, button) {
+      const audio = new Audio(soundFile);
+      if (audio.paused) {
+        audio.play();
+        button.textContent = 'Pausar';
+        button.onclick = function() {
+          audio.pause();
+          button.textContent = 'Reproducir';
+          button.onclick = function() {
+            toggleSound(soundFile, button);
+          };
+        };
+      } else {
+        audio.pause();
+        button.textContent = 'Reproducir';
+      }
+    }
+  </script>
+</body>
+</html>
